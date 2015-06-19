@@ -1,23 +1,31 @@
+/**
+ * Draw random rectangles (pieces)
+ * Redefine w.echo and their call to ajust for your application
+ * Used in Favinbox.com
+ * 20 ms to calculate 3k items in 3x3 area with 3 repetions per line
+ * @author Alejandro Moraga <moraga86@gmail.com>
+ */
+
 var w = {};
 
 // base width and height
 w.size = 120;
 
-// rectangles
+// pieces
 w.rect = [
 	[2, 2],
 	[2, 1],
 	[1, 2]
 ];
 
-// some area
+// custom area
 w.area = [
 	[0, 0, 0],
 	[0, 0, 0],
 	[0, 0, 0],
 ];
 
-// left area max repetition
+// areas per line
 w.rept = 3;
 
 w.rows = w.area.length;
@@ -30,6 +38,7 @@ var re = new RegExp('(\\d{'+ w.cols +'})', 'g');
 
 // cache possibilities
 for (var i = 0, j, k, zero = '0'.repeat(w.cols); i < w.rect.length; i++)
+	// set col/row fill preference by inverting these for statements bellow
 	for (k = 0; k < w.cols; k++)
 		for (j = 0; j < w.rows; j++)
 			if (w.cols - k >= w.rect[i][0] && w.rows - j >= w.rect[i][1])
